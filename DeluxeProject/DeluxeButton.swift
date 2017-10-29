@@ -7,21 +7,25 @@
 //
 
 import UIKit
+@IBDesignable
 final class DeluxeButton: UIControl{
+    
+    @IBInspectable
+    public var pressedBackGroundColor : UIColor = #colorLiteral(red: 0.9981653094, green: 0, blue: 0.9724083543, alpha: 1)
+    
+    @IBInspectable
+    public var unPressedBackGroundColor: UIColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) {
+        didSet{
+            backgroundColor = unPressedBackGroundColor
+        }
+    }
     
     fileprivate let imageView: UIImageView  = {
         let iv = UIImageView()
         iv.layer.masksToBounds = true
         iv.isUserInteractionEnabled = false
-//        iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-    
-    fileprivate lazy var outerView: UIView = {
-        let view = UIView()
-        view.isUserInteractionEnabled = false
-        return view
-    } ()
     
     fileprivate let label: UILabel = {
         let lbl = UILabel()
@@ -36,7 +40,7 @@ final class DeluxeButton: UIControl{
     }()
     
     fileprivate lazy var stackView : UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [self.outerView ,
+        let sv = UIStackView(arrangedSubviews: [self.imageView ,
                                                 self.label])
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.isUserInteractionEnabled = false
@@ -77,9 +81,6 @@ final class DeluxeButton: UIControl{
             stackView.rightAnchor.constraint(equalTo: layoutMarginsGuide.rightAnchor),
             label.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
             ])
-        
-        imageView.frame = CGRect(x: constant, y: constant, width: self.outerView.frame.width - constant*2, height: self.outerView.frame.height - constant*2)
-        outerView.addSubview(imageView)
     }
     
     override func tintColorDidChange() {
@@ -87,7 +88,41 @@ final class DeluxeButton: UIControl{
         layer.borderColor = tintColor.cgColor
     }
 }
+
+// Mark Pressed
 extension DeluxeButton{
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        animate(isPressed: true)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animate(isPressed: false)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        animate(isPressed: false)
+    }
+    
+    private func animate(isPressed: Bool){
+        let (duration, backGroundColor , labelIsHidden) = {
+            isPressed ? (duration: 0.05, backgroundColor : pressedBackGroundColor , labelIsHidden : true) : (duration: 0.1 , backgroundColor: unPressedBackGroundColor , labelIsHidden : false)
+        }()
+        
+        UIView.animate(withDuration: duration) {
+            self.backgroundColor = backGroundColor
+            self.label.isHidden = labelIsHidden
+        }
+    }
+}
+
+
+extension DeluxeButton{
+    
+    @IBInspectable
     var image : UIImage? {
         get {
             return imageView.image
@@ -97,6 +132,7 @@ extension DeluxeButton{
         }
     }
     
+    @IBInspectable
     var text: String?{
         get {
             return label.text
@@ -106,6 +142,7 @@ extension DeluxeButton{
         }
     }
     
+    @IBInspectable
     var textColor: UIColor? {
         get {
             return label.textColor
@@ -115,6 +152,7 @@ extension DeluxeButton{
         }
     }
     
+    @IBInspectable
     var borderWidth: CGFloat{
         get {
             return layer.borderWidth
@@ -123,19 +161,23 @@ extension DeluxeButton{
             layoutMargins = UIEdgeInsets(
                 top: newValue,
                 left: newValue,
-                bottom: newValue / 2,
+                bottom: newValue / 2 ,
                 right: newValue
             )
             layer.borderWidth = newValue
         }
     }
     
+    @IBInspectable
     var imagePadding: CGFloat{
         get {
-            return constant
+            return image?.alignmentRectInsets.top ?? 0
         }
         set {
-            constant = newValue
+            image = image?.withAlignmentRectInsets(UIEdgeInsets(top: -newValue,
+                                                        left: -newValue,
+                                                        bottom: -newValue,
+                                                        right: -newValue))
         }
     }
 }

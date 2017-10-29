@@ -24,16 +24,16 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    fileprivate let button: DeluxeButton = {
-        let btn = DeluxeButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.text = "Lemonade"
-        btn.borderWidth = 10
-        btn.imagePadding = 5
-        btn.tintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-        btn.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
-        return btn
-    }()
+//    fileprivate let button: DeluxeButton = {
+//        let btn = DeluxeButton()
+//        btn.translatesAutoresizingMaskIntoConstraints = false
+//        btn.text = "Lemonade"
+//        btn.borderWidth = 10
+//        btn.imagePadding = 5
+//        btn.tintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+//        btn.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+//        return btn
+//    }()
     
     @IBOutlet weak var btn: DeluxeButton!
     
@@ -41,21 +41,21 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            button.image = #imageLiteral(resourceName: "drink")
-        
-                btn.text = "Hello"
-                btn.borderWidth = 20
-                btn.imagePadding = 20
-                btn.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-                btn.image = #imageLiteral(resourceName: "spaceship")
-        
-        view.addSubview(button)
-        NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant : 300),
-            button.leftAnchor.constraint(equalTo: view.leftAnchor, constant : 20),
-            button.widthAnchor.constraint(equalToConstant: 150),
-            button.heightAnchor.constraint(equalToConstant: 150)
-            ])
+//            button.image = #imageLiteral(resourceName: "drink")
+//
+//                btn.text = "Hello"
+//                btn.borderWidth = 20
+//                btn.imagePadding = 20
+//                btn.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+//                btn.image = #imageLiteral(resourceName: "spaceship")
+//
+//        view.addSubview(button)
+//        NSLayoutConstraint.activate([
+//            button.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant : 300),
+//            button.leftAnchor.constraint(equalTo: view.leftAnchor, constant : 20),
+//            button.widthAnchor.constraint(equalToConstant: 150),
+//            button.heightAnchor.constraint(equalToConstant: 150)
+//            ])
     }
 
     @IBAction func tapped(_ sender: Any) {

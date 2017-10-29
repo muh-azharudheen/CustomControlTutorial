@@ -21,24 +21,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRk-b5-WZK" customClass="DeluxeButton" customModule="DeluxeProject" customModuleProvider="target">
-                                <rect key="frame" x="175" y="20" width="200" height="200"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.13725490200000001" green="0.41960784309999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="3Rg-jF-fzJ"/>
-                                    <constraint firstAttribute="width" constant="200" id="eoQ-Jb-USQ"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="deluxTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="TjA-0f-hkT"/>
-                                    <action selector="tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S2r-cu-6c1"/>
-                                </connections>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="eZg-TV-qpM">
+                                <rect key="frame" x="62.5" y="83.5" width="250" height="500"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRk-b5-WZK" customClass="DeluxeButton" customModule="DeluxeProject" customModuleProvider="target">
+                                        <rect key="frame" x="25" y="0.0" width="200" height="250"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="3Rg-jF-fzJ"/>
+                                            <constraint firstAttribute="width" constant="200" id="eoQ-Jb-USQ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="spaceship"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Ship Me!"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unPressedBackGroundColor">
+                                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imagePadding">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="deluxTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="TjA-0f-hkT"/>
+                                            <action selector="tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S2r-cu-6c1"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S70-Tq-BFO" customClass="DeluxeButton" customModule="DeluxeProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="300" width="250" height="200"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.9981653094291687" green="0.0" blue="0.97240835428237915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="RlX-Zy-i8U"/>
+                                            <constraint firstAttribute="height" constant="200" id="mf9-Gv-Yma"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unPressedBackGroundColor">
+                                                <color key="value" red="0.85190385580062866" green="0.86165207624435425" blue="0.067327417433261871" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="drink"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="DRINK ME"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imagePadding">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="deluxTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="TvI-sX-AQw"/>
+                                            <action selector="tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="reS-sk-u5l"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gRk-b5-WZK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="K0X-Vf-2Um"/>
-                            <constraint firstAttribute="trailing" secondItem="gRk-b5-WZK" secondAttribute="trailing" id="Zbp-Cl-CX5"/>
+                            <constraint firstItem="eZg-TV-qpM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fqb-ou-9er"/>
+                            <constraint firstItem="eZg-TV-qpM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="k37-Tb-qzU"/>
                         </constraints>
                     </view>
                     <connections>
@@ -50,4 +94,8 @@
             <point key="canvasLocation" x="292" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="drink" width="64" height="64"/>
+        <image name="spaceship" width="64" height="64"/>
+    </resources>
 </document>
